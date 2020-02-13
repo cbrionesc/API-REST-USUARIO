@@ -1,0 +1,35 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'cl.global.logic.test.api'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly("org.springframework.boot:spring-boot-devtools")
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-test'
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.5.1'
+	runtime("com.h2database:h2:1.4.196")
+	testImplementation('org.junit.jupiter:junit-jupiter-api:5.4.2')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.2')
+    testCompileOnly 'junit:junit:4.12'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.3.1'
+}
+
+test {
+	useJUnitPlatform()
+}
